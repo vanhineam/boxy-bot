@@ -6,7 +6,7 @@ import logging
 import random
 import time
 import wikipedia
-
+# Testing Git
 bot_description = 'Our awesome Box Boy\'s Discord bot.'
 
 parser = argparse.ArgumentParser(description=bot_description)
@@ -82,15 +82,5 @@ async def tight(ctx):
     await client.say('Tight.')
 
 
-@client.command(description='Gives emoji stats on a user')
-async def stats(user : str):
-    """
-    """
-    if user and user != '':
-        logging.info('Getting stats for %s', user)
-
-    else:
-        logging.info('No user sent')
-        await client.say('Please specify a user you would like stats for.')
 
 client.run(parser.parse_args().token)
