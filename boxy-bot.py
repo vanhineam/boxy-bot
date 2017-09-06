@@ -68,5 +68,14 @@ async def random_wiki():
 
     await client.say('%s: %s' % (wiki_pages.title, wiki_pages.url))
 
+@client.command(description='Tight.')
+async def tight():
+    """Tight.
+
+    tight.
+    """
+    logging.info('Tight.')
+    await client.say('Tight.')
+
 
 client.run(parser.parse_args().token)
