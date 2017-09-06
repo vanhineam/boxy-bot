@@ -42,7 +42,7 @@ async def roll(dice : str):
     try:
         rolls, limit = map(int, dice.split('d'))
     except Exception:
-        await client.say('Format has to in be NdN! (e.g. 1d6)')
+        await client.say('Format has to be in NdN! (e.g. 1d6)')
         return
 
     if limit > 0:
