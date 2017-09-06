@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 import logging
 import random
+import time
 import wikipedia
 
 bot_description = 'Our awesome Box Boy\'s Discord bot.'
@@ -68,14 +69,28 @@ async def random_wiki():
 
     await client.say('%s: %s' % (wiki_pages.title, wiki_pages.url))
 
-@client.command(description='Tight.')
-async def tight():
+
+@client.command(description='Tight.', pass_context=True)
+async def tight(ctx):
     """Tight.
 
     tight.
     """
     logging.info('Tight.')
+    await client.send_typing(ctx.message.channel)
+    time.sleep(0.5)
     await client.say('Tight.')
 
+
+@client.command(description='Gives emoji stats on a user')
+async def stats(user : str):
+    """
+    """
+    if user and user != '':
+        logging.info('Getting stats for %s', user)
+
+    else:
+        logging.info('No user sent')
+        await client.say('Please specify a user you would like stats for.')
 
 client.run(parser.parse_args().token)
