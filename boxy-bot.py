@@ -29,12 +29,21 @@ async def on_ready():
 
 @client.command()
 async def roll(dice : str):
+    """Rolls a dice!
+
+    A simple command to handle rolling the dice.
+
+    Args:
+        dice: A string in the format 'NdN' specifying the number of die you want
+              to roll, and the number of sides you want that die to have.
+    """
     logging.info('Received Dice Roll Request')
     try:
         rolls, limit = map(int, dice.split('d'))
     except Exception:
         await client.say('Format has to in NdN!')
         return
+
     if limit > 0:
         result = ', '.join(str(random.randint(1,limit)) for r in range(rolls))
         logging.info('Roll... %s' % result)
@@ -45,28 +54,19 @@ async def roll(dice : str):
 
 
 @client.command()
-async def random_wiki(pages=1):
+async def random_wiki():
+    """Finds a random wikipedia page.
+
+    This randomly selects a wikipedia page and prints the title and url to
+    discord, in the channel the user requested.
+    """
     logging.info('Received Random Wikipedia Page Request: %d' % pages)
-    if pages > 5:
-        await client.say('I am not going to spam the channel')
-    else:
-        articles = []
-        logging.info('Requesting %s pages' % pages)
-        results = wikipedia.random(pages)
-        if type(results) is str:
-            logging.info('Got a single page')
-            articles = [wikipedia.page(title=results)]
-        elif type(results) is dict:
-            logging.info('Got multiple articles')
-            for result in results:
-                articles.append(wikipedia.page(title=result))
+    results = wikipedia.random()
+    if type(results) is str:
+        logging.info('Got a wikipedia page')
+        wiki_pages = wikipedia.page(title=results)
 
-        messages = []
-        for article in articles:
-            messages.append('%s: %s' % (article.title, article.url))
-            logging.info('Sending the following wiki-page: %s' % message)
-
-
+    await client.say('%s: %s' % (wiki_pages.title, wiki_pages.url))
 
 
 client.run(parser.parse_args().token)
