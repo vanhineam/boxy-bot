@@ -27,7 +27,7 @@ async def on_ready():
     logging.info(client.user.bot)
 
 
-@client.command()
+@client.command(description='Roll some die.')
 async def roll(dice : str):
     """Rolls a dice!
 
@@ -53,7 +53,7 @@ async def roll(dice : str):
     await client.say(result)
 
 
-@client.command()
+@client.command(description='Gets a random wikipedia page.')
 async def random_wiki():
     """Finds a random wikipedia page.
 
