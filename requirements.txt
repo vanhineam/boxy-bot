@@ -5,7 +5,7 @@ beautifulsoup4==4.6.0
 certifi==2017.7.27.1
 cffi==1.10.0
 chardet==3.0.4
-cryptography==2.0.3
+cryptography==3.2
 discord.py==0.16.10
 idna==2.6
 keyring==10.4.0
