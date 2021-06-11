@@ -15,5 +15,5 @@ requests==2.18.4
 SecretStorage==2.3.1
 six==1.10.0
 urllib3==1.22
-websockets==3.4
+websockets==9.1
 wikipedia==1.4.0
